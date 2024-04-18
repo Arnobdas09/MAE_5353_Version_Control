@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>WinMerge File Compare Report</title>
+<style>
+<!--
+table { table-layout: fixed; margin: 0; border: 1px solid #a0a0a0; box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.15); }
+th { position: sticky; top: 0; }
+td,th { word-break: break-all; font-size: 12pt; padding: 0 3px; }
+tr { vertical-align: top; }
+.title { font-weight: bold; color: white; background-color: blue; vertical-align: top; text-align: center; padding: 4px 4px; background: linear-gradient(mediumblue, darkblue);}
+.sf3b2 {color: #000000; background-color: #ffffff; }
+.sf3b5 {color: #000000; background-color: #0078d7; }
+.sf3b14 {color: #000000; background-color: #ffa0a0; }
+.sf3b16 {color: #000000; background-color: #f1e2ad; }
+.sf3b18 {color: #000000; background-color: #ffaa82; }
+.sf3b19 {color: #000000; background-color: #c8816c; }
+.sf6b2 {color: #ffffff; background-color: #ffffff; }
+.sf6b5 {color: #ffffff; background-color: #0078d7; }
+.sf6b14 {color: #ffffff; background-color: #ffa0a0; }
+.sf6b16 {color: #ffffff; background-color: #f1e2ad; }
+.sf6b18 {color: #ffffff; background-color: #ffaa82; }
+.sf6b19 {color: #ffffff; background-color: #c8816c; }
+.sf7b2 {color: #0000ff; background-color: #ffffff; font-weight: bold; }
+.sf7b5 {color: #0000ff; background-color: #0078d7; font-weight: bold; }
+.sf7b14 {color: #0000ff; background-color: #ffa0a0; font-weight: bold; }
+.sf7b16 {color: #0000ff; background-color: #f1e2ad; font-weight: bold; }
+.sf7b18 {color: #0000ff; background-color: #ffaa82; font-weight: bold; }
+.sf7b19 {color: #0000ff; background-color: #c8816c; font-weight: bold; }
+.sf8b2 {color: #800080; background-color: #ffffff; }
+.sf8b5 {color: #800080; background-color: #0078d7; }
+.sf8b14 {color: #800080; background-color: #ffa0a0; }
+.sf8b16 {color: #800080; background-color: #f1e2ad; }
+.sf8b18 {color: #800080; background-color: #ffaa82; }
+.sf8b19 {color: #800080; background-color: #c8816c; }
+.sf9b2 {color: #008000; background-color: #ffffff; }
+.sf9b5 {color: #008000; background-color: #0078d7; }
+.sf9b14 {color: #008000; background-color: #ffa0a0; }
+.sf9b16 {color: #008000; background-color: #f1e2ad; }
+.sf9b18 {color: #008000; background-color: #ffaa82; }
+.sf9b19 {color: #008000; background-color: #c8816c; }
+.sf10b2 {color: #ff0000; background-color: #ffffff; }
+.sf10b5 {color: #ff0000; background-color: #0078d7; }
+.sf10b14 {color: #ff0000; background-color: #ffa0a0; }
+.sf10b16 {color: #ff0000; background-color: #f1e2ad; }
+.sf10b18 {color: #ff0000; background-color: #ffaa82; }
+.sf10b19 {color: #ff0000; background-color: #c8816c; }
+.sf11b2 {color: #606060; background-color: #ffffff; }
+.sf11b5 {color: #606060; background-color: #0078d7; }
+.sf11b14 {color: #606060; background-color: #ffa0a0; }
+.sf11b16 {color: #606060; background-color: #f1e2ad; }
+.sf11b18 {color: #606060; background-color: #ffaa82; }
+.sf11b19 {color: #606060; background-color: #c8816c; }
+.sf12b2 {color: #800000; background-color: #ffffff; }
+.sf12b5 {color: #800000; background-color: #0078d7; }
+.sf12b14 {color: #800000; background-color: #ffa0a0; }
+.sf12b16 {color: #800000; background-color: #f1e2ad; }
+.sf12b18 {color: #800000; background-color: #ffaa82; }
+.sf12b19 {color: #800000; background-color: #c8816c; }
+.sf13b2 {color: #0080c0; background-color: #ffffff; }
+.sf13b5 {color: #0080c0; background-color: #0078d7; }
+.sf13b14 {color: #0080c0; background-color: #ffa0a0; }
+.sf13b16 {color: #0080c0; background-color: #f1e2ad; }
+.sf13b18 {color: #0080c0; background-color: #ffaa82; }
+.sf13b19 {color: #0080c0; background-color: #c8816c; }
+.sf15b2 {color: #000000; background-color: #ffffff; }
+.sf15b5 {color: #000000; background-color: #0078d7; }
+.sf15b14 {color: #000000; background-color: #ffa0a0; }
+.sf15b16 {color: #000000; background-color: #f1e2ad; }
+.sf15b18 {color: #000000; background-color: #ffaa82; }
+.sf15b19 {color: #000000; background-color: #c8816c; }
+.sf17b2 {color: #000000; background-color: #ffffff; }
+.sf17b5 {color: #000000; background-color: #0078d7; }
+.sf17b14 {color: #000000; background-color: #ffa0a0; }
+.sf17b16 {color: #000000; background-color: #f1e2ad; }
+.sf17b18 {color: #000000; background-color: #ffaa82; }
+.sf17b19 {color: #000000; background-color: #c8816c; }
+.sf20b2 {color: #000080; background-color: #ffffff; }
+.sf20b5 {color: #000080; background-color: #0078d7; }
+.sf20b14 {color: #000080; background-color: #ffa0a0; }
+.sf20b16 {color: #000080; background-color: #f1e2ad; }
+.sf20b18 {color: #000080; background-color: #ffaa82; }
+.sf20b19 {color: #000080; background-color: #c8816c; }
+.sf21b2 {color: #0080c0; background-color: #ffffff; }
+.sf21b5 {color: #0080c0; background-color: #0078d7; }
+.sf21b14 {color: #0080c0; background-color: #ffa0a0; }
+.sf21b16 {color: #0080c0; background-color: #f1e2ad; }
+.sf21b18 {color: #0080c0; background-color: #ffaa82; }
+.sf21b19 {color: #0080c0; background-color: #c8816c; }
+.sf3b2i {color: #ababab; background-color: #ffffff; }
+.sf3b5i {color: #005190; background-color: #0078d7; }
+.sf3b14i {color: #ab6b6b; background-color: #ffa0a0; }
+.sf3b16i {color: #a19774; background-color: #f1e2ad; }
+.sf3b18i {color: #ab7257; background-color: #ffaa82; }
+.sf3b19i {color: #865749; background-color: #c8816c; }
+.sf6b2i {color: #ffffff; background-color: #ffffff; }
+.sf6b5i {color: #54a4e4; background-color: #0078d7; }
+.sf6b14i {color: #ffbfbf; background-color: #ffa0a0; }
+.sf6b16i {color: #f5ebc8; background-color: #f1e2ad; }
+.sf6b18i {color: #ffc6ab; background-color: #ffaa82; }
+.sf6b19i {color: #daaa9c; background-color: #c8816c; }
+.sf7b2i {color: #ababff; background-color: #ffffff; font-weight: bold; }
+.sf7b5i {color: #0051e4; background-color: #0078d7; font-weight: bold; }
+.sf7b14i {color: #ab6bbf; background-color: #ffa0a0; font-weight: bold; }
+.sf7b16i {color: #a197c8; background-color: #f1e2ad; font-weight: bold; }
+.sf7b18i {color: #ab72ab; background-color: #ffaa82; font-weight: bold; }
+.sf7b19i {color: #86579c; background-color: #c8816c; font-weight: bold; }
+.sf8b2i {color: #d5abd5; background-color: #ffffff; }
+.sf8b5i {color: #2a51bb; background-color: #0078d7; }
+.sf8b14i {color: #d56b96; background-color: #ffa0a0; }
+.sf8b16i {color: #cc979f; background-color: #f1e2ad; }
+.sf8b18i {color: #d57282; background-color: #ffaa82; }
+.sf8b19i {color: #b15772; background-color: #c8816c; }
+.sf9b2i {color: #abd5ab; background-color: #ffffff; }
+.sf9b5i {color: #007a90; background-color: #0078d7; }
+.sf9b14i {color: #ab966b; background-color: #ffa0a0; }
+.sf9b16i {color: #a1c274; background-color: #f1e2ad; }
+.sf9b18i {color: #ab9d57; background-color: #ffaa82; }
+.sf9b19i {color: #868149; background-color: #c8816c; }
+.sf10b2i {color: #ffabab; background-color: #ffffff; }
+.sf10b5i {color: #545190; background-color: #0078d7; }
+.sf10b14i {color: #ff6b6b; background-color: #ffa0a0; }
+.sf10b16i {color: #f59774; background-color: #f1e2ad; }
+.sf10b18i {color: #ff7257; background-color: #ffaa82; }
+.sf10b19i {color: #da5749; background-color: #c8816c; }
+.sf11b2i {color: #cbcbcb; background-color: #ffffff; }
+.sf11b5i {color: #1f71b0; background-color: #0078d7; }
+.sf11b14i {color: #cb8b8b; background-color: #ffa0a0; }
+.sf11b16i {color: #c1b794; background-color: #f1e2ad; }
+.sf11b18i {color: #cb9277; background-color: #ffaa82; }
+.sf11b19i {color: #a67769; background-color: #c8816c; }
+.sf12b2i {color: #d5abab; background-color: #ffffff; }
+.sf12b5i {color: #2a5190; background-color: #0078d7; }
+.sf12b14i {color: #d56b6b; background-color: #ffa0a0; }
+.sf12b16i {color: #cc9774; background-color: #f1e2ad; }
+.sf12b18i {color: #d57257; background-color: #ffaa82; }
+.sf12b19i {color: #b15749; background-color: #c8816c; }
+.sf13b2i {color: #abd5eb; background-color: #ffffff; }
+.sf13b5i {color: #007ad0; background-color: #0078d7; }
+.sf13b14i {color: #ab96aa; background-color: #ffa0a0; }
+.sf13b16i {color: #a1c2b3; background-color: #f1e2ad; }
+.sf13b18i {color: #ab9d96; background-color: #ffaa82; }
+.sf13b19i {color: #868187; background-color: #c8816c; }
+.sf15b2i {color: #ababab; background-color: #ffffff; }
+.sf15b5i {color: #005190; background-color: #0078d7; }
+.sf15b14i {color: #ab6b6b; background-color: #ffa0a0; }
+.sf15b16i {color: #a19774; background-color: #f1e2ad; }
+.sf15b18i {color: #ab7257; background-color: #ffaa82; }
+.sf15b19i {color: #865749; background-color: #c8816c; }
+.sf17b2i {color: #ababab; background-color: #ffffff; }
+.sf17b5i {color: #005190; background-color: #0078d7; }
+.sf17b14i {color: #ab6b6b; background-color: #ffa0a0; }
+.sf17b16i {color: #a19774; background-color: #f1e2ad; }
+.sf17b18i {color: #ab7257; background-color: #ffaa82; }
+.sf17b19i {color: #865749; background-color: #c8816c; }
+.sf20b2i {color: #ababd5; background-color: #ffffff; }
+.sf20b5i {color: #0051bb; background-color: #0078d7; }
+.sf20b14i {color: #ab6b96; background-color: #ffa0a0; }
+.sf20b16i {color: #a1979f; background-color: #f1e2ad; }
+.sf20b18i {color: #ab7282; background-color: #ffaa82; }
+.sf20b19i {color: #865772; background-color: #c8816c; }
+.sf21b2i {color: #abd5eb; background-color: #ffffff; }
+.sf21b5i {color: #007ad0; background-color: #0078d7; }
+.sf21b14i {color: #ab96aa; background-color: #ffa0a0; }
+.sf21b16i {color: #a1c2b3; background-color: #f1e2ad; }
+.sf21b18i {color: #ab9d96; background-color: #ffaa82; }
+.sf21b19i {color: #868187; background-color: #c8816c; }
+.cn {text-align: center; word-break: normal; color: #000000; background-color: #f0f0f0;}
+.ln {text-align: right; word-break: normal; color: #000000; background-color: #f0f0f0;}
+-->
+</style>
+</head>
+<body>
+<table style="width: 100%%; border-collapse: collapse;">
+<colgroup>
+<col style="width: 0.5em;" />
+<col style="width: calc(100% / 2 - 0.5em);" />
+<col style="width: 0.5em;" />
+<col style="width: calc(100% / 2 - 0.5em);" />
+</colgroup>
+<thead>
+<tr>
+<th colspan="2" class="title">E:\2nd_semester\MAE_5353\Arnob_HW\Version_Control HW\MAE_5353_Version_Control\Revisiting_Pandas_Matplotlib\Arnob_Das_HW_3.B.py</th>
+<th colspan="2" class="title">E:\2nd_semester\MAE_5353\Arnob_HW\Version_Control HW\MAE_5353_Version_Control\Revisiting_Pandas_Matplotlib\Arnob_Das_HW_3.1.py</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf9b2"># -*- coding: utf-8 -*-</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf9b2"># -*- coding: utf-8 -*-</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf12b2">"""</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf12b2">"""</span></code></td>
+</tr>
+<tr>
+<td class="ln"><a id="d1" href="#d1">.</a></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">Created</span><span style="color: #000000; background-color: #efcb05; ">&nbsp;</span><span style="color: #000000; background-color: #efcb05; ">on</span><span style="color: #000000; background-color: #efcb05; ">&nbsp;</span><span style="color: #000000; background-color: #efcb05; ">Wed</span><span style="color: #000000; background-color: #efcb05; ">&nbsp;</span><span style="color: #000000; background-color: #efcb05; ">Apr</span><span style="color: #000000; background-color: #efcb05; ">&nbsp;</span><span style="color: #000000; background-color: #efcb05; ">17</span><span style="color: #000000; background-color: #efcb05; ">&nbsp;</span><span style="color: #000000; background-color: #efcb05; ">13</span><span style="color: #000000; background-color: #efcb05; ">:</span><span class="sf17b16">3</span><span style="color: #000000; background-color: #efcb05; ">4</span><span style="color: #000000; background-color: #efcb05; ">:</span><span class="sf17b16">30</span><span style="color: #000000; background-color: #efcb05; ">&nbsp;</span><span style="color: #000000; background-color: #efcb05; ">2024</span></code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; ">Created</span><span style="color: #000000; background-color: #efcb05; ">&nbsp;</span><span style="color: #000000; background-color: #efcb05; ">on</span><span style="color: #000000; background-color: #efcb05; ">&nbsp;</span><span style="color: #000000; background-color: #efcb05; ">Wed</span><span style="color: #000000; background-color: #efcb05; ">&nbsp;</span><span style="color: #000000; background-color: #efcb05; ">Apr</span><span style="color: #000000; background-color: #efcb05; ">&nbsp;</span><span style="color: #000000; background-color: #efcb05; ">17</span><span style="color: #000000; background-color: #efcb05; ">&nbsp;</span><span style="color: #000000; background-color: #efcb05; ">13</span><span style="color: #000000; background-color: #efcb05; ">:</span><span class="sf17b16">5</span><span style="color: #000000; background-color: #efcb05; ">4</span><span style="color: #000000; background-color: #efcb05; ">:</span><span class="sf17b16">27</span><span style="color: #000000; background-color: #efcb05; ">&nbsp;</span><span style="color: #000000; background-color: #efcb05; ">2024</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf11b2">@</span><span class="sf3b2">author</span><span class="sf11b2">: </span><span class="sf3b2">arnob</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf11b2">@</span><span class="sf3b2">author</span><span class="sf11b2">: </span><span class="sf3b2">arnob</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf12b2">"""</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf12b2">"""</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf7b2">import</span><span class="sf11b2">&nbsp;</span><span class="sf3b2">matplotlib</span><span class="sf11b2">.</span><span class="sf3b2">pyplot</span><span class="sf11b2">&nbsp;</span><span class="sf7b2">as</span><span class="sf11b2">&nbsp;</span><span class="sf3b2">plt</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf7b2">import</span><span class="sf11b2">&nbsp;</span><span class="sf3b2">matplotlib</span><span class="sf11b2">.</span><span class="sf3b2">pyplot</span><span class="sf11b2">&nbsp;</span><span class="sf7b2">as</span><span class="sf11b2">&nbsp;</span><span class="sf3b2">plt</span></code></td>
+</tr>
+<tr>
+<td class="ln"><a id="d2" href="#d2">.</a></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; font-weight: bold; ">from</span><span style="color: #000000; background-color: #efcb05; ">&nbsp;</span><span style="color: #000000; background-color: #efcb05; ">matplotlib</span><span style="color: #000000; background-color: #efcb05; ">.</span><span style="color: #000000; background-color: #efcb05; ">lines</span><span style="color: #000000; background-color: #efcb05; ">&nbsp;</span><span style="color: #000000; background-color: #efcb05; font-weight: bold; ">import</span><span style="color: #000000; background-color: #efcb05; ">&nbsp;</span><span style="color: #000000; background-color: #efcb05; ">Line2D</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf7b2">import</span><span class="sf11b2">&nbsp;</span><span class="sf3b2">pandas</span><span class="sf11b2">&nbsp;</span><span class="sf7b2">as</span><span class="sf11b2">&nbsp;</span><span class="sf3b2">pd</span></code></td>
+<td class="ln"></td><td class="sf3b2"><code><span class="sf7b2">import</span><span class="sf11b2">&nbsp;</span><span class="sf3b2">pandas</span><span class="sf11b2">&nbsp;</span><span class="sf7b2">as</span><span class="sf11b2">&nbsp;</span><span class="sf3b2">pd</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"><a id="d3" href="#d3">.</a></td><td style="color: #000000; background-color: #efcb05; "><code><span class="sf17b18"># Define input and output file paths</span>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span class="sf17b16">input_file_path</span><span style="color: #000000; background-color: #efcb05; ">&nbsp;</span><span class="sf17b16">=</span><span style="color: #000000; background-color: #efcb05; ">&nbsp;</span><span class="sf17b16">'E</span><span style="color: #000000; background-color: #efcb05; ">:</span><span class="sf17b18">\\2nd_semester\\MAE_5353\\Arnob_HW\\<wbr>HW_2\\PerformanceData_Unitxx_ArnobDas.x<wbr>lsx'</span>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span class="sf17b16">def</span><span style="color: #000000; background-color: #efcb05; ">&nbsp;</span><span class="sf17b16">plot_temperature_vs_cop(source_file,</span><span style="color: #000000; background-color: #efcb05; ">&nbsp;</span><span class="sf17b16">plot_fname, dpi=300)</span><span style="color: #000000; background-color: #efcb05; ">:</span>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span class="sf17b16">output_file_path</span><span style="color: #000000; background-color: #efcb05; ">&nbsp;</span><span class="sf17b16">=</span><span style="color: #000000; background-color: #efcb05; ">&nbsp;</span><span class="sf17b16">'E:\\2nd_semester\\MAE_5353\\Arnob_HW\\<wbr>HW_2\\Output.xlsx'</span>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span class="sf17b16">&nbsp; &nbsp; #</span><span style="color: #000000; background-color: #efcb05; ">&nbsp;</span><span class="sf17b16">Read</span><span style="color: #000000; background-color: #efcb05; ">&nbsp;</span><span class="sf17b16">data</span>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span class="sf17b18">&nbsp; &nbsp; df = pd.read_excel(</span>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span class="sf17b16">#=================== _________Reading the data _________========================</span>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span class="sf17b16">&nbsp; &nbsp; &nbsp; &nbsp; source_file,</span>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span class="sf17b16">df = pd.read_excel(input_file_path, </span><span style="color: #000000; background-color: #efcb05; ">sheet_name</span><span style="color: #000000; background-color: #efcb05; ">=</span><span style="color: #000000; background-color: #efcb05; ">'SteadyState'</span><span style="color: #000000; background-color: #efcb05; ">,</span><span class="sf17b18">&nbsp;skiprows=[], header=0)</span>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span class="sf17b16">&nbsp; &nbsp; &nbsp; &nbsp; </span><span style="color: #000000; background-color: #efcb05; ">sheet_name</span><span style="color: #000000; background-color: #efcb05; ">=</span><span style="color: #000000; background-color: #efcb05; ">'SteadyState'</span><span style="color: #000000; background-color: #efcb05; ">,</span>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span class="sf17b16">df1 = pd.read_excel(input_file_path, sheet_name='Uncertainties', </span><span style="color: #000000; background-color: #efcb05; ">skiprows</span><span style="color: #000000; background-color: #efcb05; ">=[],</span><span class="sf17b18">&nbsp;header=0)</span>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span class="sf17b16">&nbsp; &nbsp; &nbsp; &nbsp; </span><span style="color: #000000; background-color: #efcb05; ">skiprows</span><span style="color: #000000; background-color: #efcb05; ">=[],</span>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span class="sf17b16">df1.head(</span><span style="color: #000000; background-color: #efcb05; ">)</span></code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span class="sf17b16">&nbsp; &nbsp; &nbsp; &nbsp; header=0</span><span style="color: #000000; background-color: #efcb05; ">)</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span class="sf17b18">&nbsp; &nbsp; df1 = pd.read_excel(</span>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span class="sf17b16">x</span><span style="color: #000000; background-color: #efcb05; ">,</span><span class="sf17b18">&nbsp;y = 'Amb_Temp_F', 'COP_W/W'</span>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span class="sf17b16">&nbsp; &nbsp; &nbsp; &nbsp; source_file</span><span style="color: #000000; background-color: #efcb05; ">,</span>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span class="sf17b18">&nbsp; &nbsp; &nbsp; &nbsp; sheet_name='Uncertainties',</span>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span class="sf17b16">fig, ax </span><span style="color: #000000; background-color: #efcb05; ">=</span><span class="sf17b16">&nbsp;plt.subplots(figsize=(10</span><span style="color: #000000; background-color: #efcb05; ">,</span><span class="sf17b18">&nbsp;6))</span>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span class="sf17b16">&nbsp; &nbsp; &nbsp; &nbsp; skiprows</span><span style="color: #000000; background-color: #efcb05; ">=</span><span class="sf17b16">[]</span><span style="color: #000000; background-color: #efcb05; ">,</span>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span class="sf17b18">&nbsp; &nbsp; &nbsp; &nbsp; header=0)</span>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span class="sf17b18"># Temperature conversion functions</span>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span class="sf17b16">def f2c(</span><span style="color: #000000; background-color: #efcb05; ">x</span><span class="sf17b16">):</span><span style="color: #000000; background-color: #efcb05; ">&nbsp;</span><span class="sf17b16">return</span><span style="color: #000000; background-color: #efcb05; ">&nbsp;</span><span class="sf17b16">(x</span><span style="color: #000000; background-color: #efcb05; ">&nbsp;</span><span class="sf17b16">-</span><span style="color: #000000; background-color: #efcb05; ">&nbsp;</span><span class="sf17b16">32) </span><span style="color: #000000; background-color: #efcb05; ">/</span><span class="sf17b16">&nbsp;1.8</span>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span class="sf17b16">&nbsp; &nbsp; </span><span style="color: #000000; background-color: #efcb05; ">x</span><span class="sf17b16">,</span><span style="color: #000000; background-color: #efcb05; ">&nbsp;</span><span class="sf17b16">y</span><span style="color: #000000; background-color: #efcb05; ">&nbsp;</span><span class="sf17b16">=</span><span style="color: #000000; background-color: #efcb05; ">&nbsp;</span><span class="sf17b16">'Amb_Temp_F',</span><span style="color: #000000; background-color: #efcb05; ">&nbsp;</span><span class="sf17b16">'COP_W</span><span style="color: #000000; background-color: #efcb05; ">/</span><span class="sf17b16">W'</span>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span class="sf17b18">def f2k(x): return (x - 32) / 1.8 + 273.15</span>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span class="sf17b16">def</span><span style="color: #000000; background-color: #efcb05; ">&nbsp;</span><span class="sf17b16">c2f(x):</span><span style="color: #000000; background-color: #efcb05; ">&nbsp;</span><span class="sf17b16">return</span><span style="color: #000000; background-color: #efcb05; ">&nbsp;</span><span class="sf17b16">x * 1</span><span style="color: #000000; background-color: #efcb05; ">.</span><span class="sf17b16">8</span><span style="color: #000000; background-color: #efcb05; ">&nbsp;</span><span class="sf17b16">+ 32</span>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span class="sf17b16">&nbsp; &nbsp; fig,</span><span style="color: #000000; background-color: #efcb05; ">&nbsp;</span><span class="sf17b16">ax</span><span style="color: #000000; background-color: #efcb05; ">&nbsp;</span><span class="sf17b16">=</span><span style="color: #000000; background-color: #efcb05; ">&nbsp;</span><span class="sf17b16">plt</span><span style="color: #000000; background-color: #efcb05; ">.</span><span class="sf17b16">subplots(figsize=(10,</span><span style="color: #000000; background-color: #efcb05; ">&nbsp;</span><span class="sf17b16">6))</span>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span class="sf17b18">def k2f(x): return (x - 273.15) * 1.8 + 32</span>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span class="sf17b18">&nbsp; &nbsp; # Temperature conversion functions</span>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span class="sf17b16">#</span><span style="color: #000000; background-color: #efcb05; ">&nbsp;</span><span class="sf17b16">Secondary</span><span style="color: #000000; background-color: #efcb05; ">&nbsp;</span><span class="sf17b16">axes</span>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span class="sf17b16">&nbsp; &nbsp; def</span><span style="color: #000000; background-color: #efcb05; ">&nbsp;</span><span class="sf17b16">f2c(x):</span><span style="color: #000000; background-color: #efcb05; ">&nbsp;</span><span class="sf17b16">return (x - 32) / 1.8</span>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span class="sf17b16">secax_x_c,</span><span style="color: #000000; background-color: #efcb05; ">&nbsp;</span><span class="sf17b16">secax_x_</span><span style="color: #000000; background-color: #efcb05; ">k</span><span style="color: #000000; background-color: #efcb05; ">&nbsp;</span><span class="sf17b16">=</span><span style="color: #000000; background-color: #efcb05; ">&nbsp;</span><span class="sf17b18">ax.secondary_xaxis</span><span style="color: #000000; background-color: #efcb05; ">(</span><span class="sf17b16">'top',</span><span style="color: #000000; background-color: #efcb05; ">&nbsp;</span><span class="sf17b16">functions=(f2c,</span><span style="color: #000000; background-color: #efcb05; ">&nbsp;</span><span class="sf17b16">c2f</span><span style="color: #000000; background-color: #efcb05; ">)</span><span class="sf17b18">),</span><span style="color: #000000; background-color: #efcb05; ">&nbsp;</span><span class="sf17b16">ax.secondary_xaxis(</span><span style="color: #000000; background-color: #efcb05; ">1.</span><span class="sf17b16">2,</span><span style="color: #000000; background-color: #efcb05; ">&nbsp;</span><span class="sf17b16">functions=(f2k,</span><span style="color: #000000; background-color: #efcb05; ">&nbsp;</span><span class="sf17b16">k2f))</span>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span class="sf17b16">&nbsp; &nbsp; def</span><span style="color: #000000; background-color: #efcb05; ">&nbsp;</span><span class="sf17b16">f2</span><span style="color: #000000; background-color: #efcb05; ">k</span><span class="sf17b18">(x):</span><span style="color: #000000; background-color: #efcb05; ">&nbsp;</span><span class="sf17b16">return</span><span style="color: #000000; background-color: #efcb05; ">&nbsp;</span><span style="color: #000000; background-color: #efcb05; ">(</span><span class="sf17b16">x</span><span style="color: #000000; background-color: #efcb05; ">&nbsp;</span><span class="sf17b16">-</span><span style="color: #000000; background-color: #efcb05; ">&nbsp;</span><span class="sf17b16">32</span><span style="color: #000000; background-color: #efcb05; ">)</span><span style="color: #000000; background-color: #efcb05; ">&nbsp;</span><span class="sf17b16">/ </span><span style="color: #000000; background-color: #efcb05; ">1.</span><span class="sf17b16">8</span><span style="color: #000000; background-color: #efcb05; ">&nbsp;</span><span class="sf17b16">+</span><span style="color: #000000; background-color: #efcb05; ">&nbsp;</span><span class="sf17b16">273.15</span>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span class="sf17b16">secax_x_c.set_xlabel</span><span style="color: #000000; background-color: #efcb05; ">(</span><span class="sf17b16">r'$Temperature\</span><span style="color: #000000; background-color: #efcb05; ">&nbsp;</span><span class="sf17b16">[^oC]$',</span><span style="color: #000000; background-color: #efcb05; ">&nbsp;</span><span class="sf17b16">fontsize=14,</span><span style="color: #000000; background-color: #efcb05; ">&nbsp;</span><span class="sf17b16">fontweight='bold')</span>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span class="sf17b16">&nbsp; &nbsp; def c2f</span><span style="color: #000000; background-color: #efcb05; ">(</span><span class="sf17b16">x):</span><span style="color: #000000; background-color: #efcb05; ">&nbsp;</span><span class="sf17b16">return</span><span style="color: #000000; background-color: #efcb05; ">&nbsp;</span><span class="sf17b16">x</span><span style="color: #000000; background-color: #efcb05; ">&nbsp;</span><span class="sf17b16">* 1.8 + 32</span>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span class="sf17b16">secax_x_k.set_xlabel</span><span style="color: #000000; background-color: #efcb05; ">(</span><span class="sf17b16">r'$Temperature\</span><span style="color: #000000; background-color: #efcb05; ">&nbsp;</span><span class="sf17b16">[K]$',</span><span style="color: #000000; background-color: #efcb05; ">&nbsp;</span><span class="sf17b16">fontsize=14,</span><span style="color: #000000; background-color: #efcb05; ">&nbsp;</span><span class="sf17b16">fontweight='bold'</span><span style="color: #000000; background-color: #efcb05; ">)</span>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span class="sf17b16">&nbsp; &nbsp; def k2f</span><span style="color: #000000; background-color: #efcb05; ">(</span><span class="sf17b16">x):</span><span style="color: #000000; background-color: #efcb05; ">&nbsp;</span><span class="sf17b16">return</span><span style="color: #000000; background-color: #efcb05; ">&nbsp;</span><span class="sf17b16">(x</span><span style="color: #000000; background-color: #efcb05; ">&nbsp;</span><span class="sf17b16">- 273.15</span><span style="color: #000000; background-color: #efcb05; ">)</span><span class="sf17b18">&nbsp;* 1.8 + 32</span>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; "># </span><span class="sf17b16">COP-EER</span><span style="color: #000000; background-color: #efcb05; ">&nbsp;</span><span class="sf17b16">conversion function</span><span style="color: #000000; background-color: #efcb05; ">s</span></code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span class="sf17b18">&nbsp; &nbsp; </span><span style="color: #000000; background-color: #efcb05; "># </span><span class="sf17b16">Secondary</span><span style="color: #000000; background-color: #efcb05; ">&nbsp;</span><span class="sf17b16">axe</span><span style="color: #000000; background-color: #efcb05; ">s</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span class="sf17b16">def</span><span style="color: #000000; background-color: #efcb05; ">&nbsp;</span><span class="sf17b16">COP2EER(x):</span><span style="color: #000000; background-color: #efcb05; ">&nbsp;</span><span class="sf17b16">return</span><span style="color: #000000; background-color: #efcb05; ">&nbsp;</span><span class="sf17b16">3</span><span style="color: #000000; background-color: #efcb05; ">.</span><span class="sf17b16">41 * x</span>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span class="sf17b16">&nbsp; &nbsp; secax_x_c,</span><span style="color: #000000; background-color: #efcb05; ">&nbsp;</span><span class="sf17b16">secax_x_k</span><span style="color: #000000; background-color: #efcb05; ">&nbsp;</span><span class="sf17b16">=</span><span style="color: #000000; background-color: #efcb05; ">&nbsp;</span><span class="sf17b16">ax</span><span style="color: #000000; background-color: #efcb05; ">.</span><span class="sf17b16">secondary_xaxis(</span>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span class="sf17b16">def</span><span style="color: #000000; background-color: #efcb05; ">&nbsp;</span><span class="sf17b16">EER2COP</span><span style="color: #000000; background-color: #efcb05; ">(</span><span class="sf17b18">x): return x / 3.41</span>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span class="sf17b16">&nbsp; &nbsp; &nbsp; &nbsp; 'top',</span><span style="color: #000000; background-color: #efcb05; ">&nbsp;</span><span class="sf17b16">functions=</span><span style="color: #000000; background-color: #efcb05; ">(</span>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span class="sf17b18">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; f2c, c2f)), ax.secondary_xaxis(</span>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span class="sf17b16">secax_y_EER = ax</span><span style="color: #000000; background-color: #efcb05; ">.</span><span class="sf17b16">secondary_yaxis('right'</span><span style="color: #000000; background-color: #efcb05; ">, </span><span style="color: #000000; background-color: #efcb05; ">functions</span><span style="color: #000000; background-color: #efcb05; ">=(</span><span class="sf17b18">COP2EER, EER2COP))</span>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span class="sf17b16">&nbsp; &nbsp; &nbsp; &nbsp; 1</span><span style="color: #000000; background-color: #efcb05; ">.</span><span class="sf17b16">2</span><span style="color: #000000; background-color: #efcb05; ">, </span><span style="color: #000000; background-color: #efcb05; ">functions</span><span style="color: #000000; background-color: #efcb05; ">=(</span>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span class="sf17b16">secax_y_EER.set_ylabel(r'$EER\ [Btu/Wh]$'</span><span style="color: #000000; background-color: #efcb05; ">, </span><span class="sf17b16">fontsize=13, fontweight='bold'</span><span style="color: #000000; background-color: #efcb05; ">)</span>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span class="sf17b16">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; f2k</span><span style="color: #000000; background-color: #efcb05; ">, </span><span class="sf17b16">k2f</span><span style="color: #000000; background-color: #efcb05; ">)</span><span class="sf17b18">)</span>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span class="sf17b18">&nbsp; &nbsp; secax_x_c.set_xlabel(</span>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span class="sf17b16">xerr,</span><span style="color: #000000; background-color: #efcb05; ">&nbsp;</span><span class="sf17b16">yerr = "Amb_Temp_F_err"</span><span style="color: #000000; background-color: #efcb05; ">,</span><span class="sf17b18">&nbsp;"COP_W/W_err"</span>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span class="sf17b16">&nbsp; &nbsp; &nbsp; &nbsp; r'$Temperature\</span><span style="color: #000000; background-color: #efcb05; ">&nbsp;</span><span class="sf17b16">[^oC]$'</span><span style="color: #000000; background-color: #efcb05; ">,</span>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span class="sf17b16">xerr_1, yerr_1 </span><span style="color: #000000; background-color: #efcb05; ">=</span><span class="sf17b16">&nbsp;df1[xerr]</span><span style="color: #000000; background-color: #efcb05; ">,</span><span class="sf17b18">&nbsp;df1[yerr]</span>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span class="sf17b16">&nbsp; &nbsp; &nbsp; &nbsp; fontsize</span><span style="color: #000000; background-color: #efcb05; ">=</span><span class="sf17b16">14</span><span style="color: #000000; background-color: #efcb05; ">,</span>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span class="sf17b18">&nbsp; &nbsp; &nbsp; &nbsp; fontweight='bold')</span>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span class="sf17b16">plt</span><span style="color: #000000; background-color: #efcb05; ">.</span><span style="color: #000000; background-color: #efcb05; ">s</span><span class="sf17b16">catter</span><span style="color: #000000; background-color: #efcb05; ">(</span><span class="sf17b16">df</span><span style="color: #000000; background-color: #efcb05; ">[</span><span class="sf17b16">x</span><span style="color: #000000; background-color: #efcb05; ">]</span><span style="color: #000000; background-color: #efcb05; ">, </span><span class="sf17b16">df[y]</span><span style="color: #000000; background-color: #efcb05; ">)</span></code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span class="sf17b16">&nbsp; &nbsp; secax_x_k</span><span style="color: #000000; background-color: #efcb05; ">.</span><span style="color: #000000; background-color: #efcb05; ">s</span><span class="sf17b16">et_xlabel</span><span style="color: #000000; background-color: #efcb05; ">(</span><span class="sf17b16">r'$Temperature\ </span><span style="color: #000000; background-color: #efcb05; ">[</span><span class="sf17b16">K</span><span style="color: #000000; background-color: #efcb05; ">]</span><span class="sf17b18">$'</span><span style="color: #000000; background-color: #efcb05; ">, </span><span class="sf17b16">fontsize=14, fontweight='bold'</span><span style="color: #000000; background-color: #efcb05; ">)</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span class="sf17b18">plt.errorbar(df[x], df[y], yerr=yerr_1, xerr=xerr_1, ecolor='red', fmt='o')</span>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span class="sf17b18">&nbsp; &nbsp; # COP-EER conversion functions</span>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span class="sf17b16">#</span><span style="color: #000000; background-color: #efcb05; ">&nbsp;</span><span class="sf17b16">Aligning</span><span style="color: #000000; background-color: #efcb05; ">&nbsp;</span><span class="sf17b16">tick</span><span style="color: #000000; background-color: #efcb05; ">&nbsp;</span><span class="sf17b16">markers</span>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span class="sf17b16">&nbsp; &nbsp; def</span><span style="color: #000000; background-color: #efcb05; ">&nbsp;</span><span class="sf17b16">COP2EER(x):</span><span style="color: #000000; background-color: #efcb05; ">&nbsp;</span><span class="sf17b16">return</span><span style="color: #000000; background-color: #efcb05; ">&nbsp;</span><span class="sf17b16">3.41 * x</span>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span class="sf17b16">ax.set_xlabel</span><span style="color: #000000; background-color: #efcb05; ">(</span><span class="sf17b16">r'$Temperature\</span><span style="color: #000000; background-color: #efcb05; ">&nbsp;</span><span class="sf17b16">[^oF]$',</span><span style="color: #000000; background-color: #efcb05; ">&nbsp;</span><span class="sf17b16">fontsize=14)</span>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span class="sf17b16">&nbsp; &nbsp; def EER2COP</span><span style="color: #000000; background-color: #efcb05; ">(</span><span class="sf17b16">x):</span><span style="color: #000000; background-color: #efcb05; ">&nbsp;</span><span class="sf17b16">return</span><span style="color: #000000; background-color: #efcb05; ">&nbsp;</span><span class="sf17b16">x / 3.41</span>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span class="sf17b18">ax.set_ylabel(r'$COP\ [W/W]$', fontsize=14)</span>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span class="sf17b16">plt</span><span style="color: #000000; background-color: #efcb05; ">.</span><span class="sf17b16">grid</span><span style="color: #000000; background-color: #efcb05; ">(</span><span class="sf17b16">True</span><span style="color: #000000; background-color: #efcb05; ">)</span>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span class="sf17b16">&nbsp; &nbsp; secax_y_EER = ax</span><span style="color: #000000; background-color: #efcb05; ">.</span><span class="sf17b16">secondary_yaxis</span><span style="color: #000000; background-color: #efcb05; ">(</span><span class="sf17b16">'right', functions=(COP2EER, EER2COP</span><span style="color: #000000; background-color: #efcb05; ">)</span><span class="sf17b18">)</span>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span class="sf17b16">plt</span><span style="color: #000000; background-color: #efcb05; ">.</span><span class="sf17b16">legend</span><span style="color: #000000; background-color: #efcb05; ">(</span><span class="sf17b16">[</span><span style="color: #000000; background-color: #efcb05; ">'</span><span class="sf17b16">COP,</span><span style="color: #000000; background-color: #efcb05; ">EER</span><span style="color: #000000; background-color: #efcb05; ">'</span><span class="sf17b18">]</span><span style="color: #000000; background-color: #efcb05; ">, </span><span class="sf17b16">loc</span><span style="color: #000000; background-color: #efcb05; ">=</span><span class="sf17b16">"lower left"</span><span style="color: #000000; background-color: #efcb05; ">, </span><span style="color: #000000; background-color: #efcb05; ">font</span><span class="sf17b16">size</span><span style="color: #000000; background-color: #efcb05; ">=</span><span class="sf17b16">16</span><span style="color: #000000; background-color: #efcb05; ">)</span></code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span class="sf17b16">&nbsp; &nbsp; secax_y_EER</span><span style="color: #000000; background-color: #efcb05; ">.</span><span class="sf17b16">set_ylabel</span><span style="color: #000000; background-color: #efcb05; ">(</span><span class="sf17b16">r</span><span style="color: #000000; background-color: #efcb05; ">'</span><span class="sf17b16">$</span><span style="color: #000000; background-color: #efcb05; ">EER</span><span class="sf17b18">\ [Btu/Wh]$</span><span style="color: #000000; background-color: #efcb05; ">'</span><span style="color: #000000; background-color: #efcb05; ">, </span><span class="sf17b16">fontsize</span><span style="color: #000000; background-color: #efcb05; ">=</span><span class="sf17b16">13</span><span style="color: #000000; background-color: #efcb05; ">, font</span><span class="sf17b16">weight</span><span style="color: #000000; background-color: #efcb05; ">=</span><span class="sf17b16">'bold'</span><span style="color: #000000; background-color: #efcb05; ">)</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span class="sf17b18">fig.suptitle('Temperature vs COP Plot', fontsize=18)</span>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span class="sf17b18">&nbsp; &nbsp; xerr, yerr = "Amb_Temp_F_err", "COP_W/W_err"</span>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span class="sf17b16">#</span><span style="color: #000000; background-color: #efcb05; ">&nbsp;</span><span class="sf17b16">Adjusting</span><span style="color: #000000; background-color: #efcb05; ">&nbsp;</span><span class="sf17b16">tick</span><span style="color: #000000; background-color: #efcb05; ">&nbsp;</span><span class="sf17b16">locations</span><span style="color: #000000; background-color: #efcb05; ">&nbsp;</span><span class="sf17b16">and labels</span>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span class="sf17b16">&nbsp; &nbsp; xerr_1,</span><span style="color: #000000; background-color: #efcb05; ">&nbsp;</span><span class="sf17b16">yerr_1</span><span style="color: #000000; background-color: #efcb05; ">&nbsp;</span><span class="sf17b16">=</span><span style="color: #000000; background-color: #efcb05; ">&nbsp;</span><span class="sf17b16">df1[xerr],</span><span style="color: #000000; background-color: #efcb05; ">&nbsp;</span><span class="sf17b16">df1[yerr]</span>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span class="sf17b18">secax_x_c.set_xticks([f2c(tick) for tick in ax.get_xticks()])</span>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span class="sf17b16">secax_x_k.set_xticks([f2k(tick)</span><span style="color: #000000; background-color: #efcb05; ">&nbsp;</span><span class="sf17b16">for</span><span style="color: #000000; background-color: #efcb05; ">&nbsp;</span><span class="sf17b16">tick</span><span style="color: #000000; background-color: #efcb05; ">&nbsp;</span><span class="sf17b16">in</span><span style="color: #000000; background-color: #efcb05; ">&nbsp;</span><span class="sf17b16">ax.get_xticks()])</span>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span class="sf17b16">&nbsp; &nbsp; #</span><span style="color: #000000; background-color: #efcb05; ">&nbsp;</span><span class="sf17b16">Changing</span><span style="color: #000000; background-color: #efcb05; ">&nbsp;</span><span class="sf17b16">error</span><span style="color: #000000; background-color: #efcb05; ">&nbsp;</span><span class="sf17b16">bar</span><span style="color: #000000; background-color: #efcb05; ">&nbsp;</span><span class="sf17b16">style</span>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span class="sf17b16">secax_y_EER</span><span style="color: #000000; background-color: #efcb05; ">.</span><span class="sf17b16">set_yticks</span><span style="color: #000000; background-color: #efcb05; ">(</span><span style="color: #000000; background-color: #efcb05; ">[</span><span class="sf17b16">COP2EER(tick)</span><span style="color: #000000; background-color: #efcb05; ">&nbsp;</span><span class="sf17b16">for</span><span style="color: #000000; background-color: #efcb05; ">&nbsp;</span><span class="sf17b16">tick</span><span style="color: #000000; background-color: #efcb05; ">&nbsp;</span><span class="sf17b16">in</span><span style="color: #000000; background-color: #efcb05; ">&nbsp;</span><span class="sf17b16">ax.get_yticks</span><span style="color: #000000; background-color: #efcb05; ">(</span><span class="sf17b18">)])</span>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span class="sf17b16">&nbsp; &nbsp; errorbars = plt</span><span style="color: #000000; background-color: #efcb05; ">.</span><span class="sf17b16">errorbar</span><span style="color: #000000; background-color: #efcb05; ">(</span><span class="sf17b18">df</span><span style="color: #000000; background-color: #efcb05; ">[</span><span class="sf17b16">x],</span><span style="color: #000000; background-color: #efcb05; ">&nbsp;</span><span class="sf17b16">df[y],</span><span style="color: #000000; background-color: #efcb05; ">&nbsp;</span><span class="sf17b16">yerr=(yerr_1,</span><span style="color: #000000; background-color: #efcb05; ">&nbsp;</span><span class="sf17b16">yerr_1),</span><span style="color: #000000; background-color: #efcb05; ">&nbsp;</span><span class="sf17b16">xerr=</span><span style="color: #000000; background-color: #efcb05; ">(</span>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span class="sf17b18">&nbsp; &nbsp; &nbsp; &nbsp; xerr_1, xerr_1), ecolor='red', fmt='o', capsize=5, capthick=2)</span>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span class="sf17b18">plt.tight_layout()</span>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span style="color: #000000; background-color: #efcb05; "># </span><span class="sf17b16">Save</span><span style="color: #000000; background-color: #efcb05; ">&nbsp;t</span><span class="sf17b16">he</span><span style="color: #000000; background-color: #efcb05; ">&nbsp;</span><span class="sf17b16">plot as PNG file with 300 DPI resolution</span>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span class="sf17b18">&nbsp; &nbsp; </span><span style="color: #000000; background-color: #efcb05; "># </span><span class="sf17b16">Aligning</span><span style="color: #000000; background-color: #efcb05; ">&nbsp;t</span><span class="sf17b16">ick</span><span style="color: #000000; background-color: #efcb05; ">&nbsp;</span><span class="sf17b16">markers</span>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span class="sf17b16">plt</span><span style="color: #000000; background-color: #efcb05; ">.</span><span style="color: #000000; background-color: #efcb05; ">s</span><span class="sf17b16">avefig</span><span style="color: #000000; background-color: #efcb05; ">(</span><span style="color: #000000; background-color: #efcb05; ">'</span><span class="sf17b16">output_plot.png</span><span style="color: #000000; background-color: #efcb05; ">'</span><span style="color: #000000; background-color: #efcb05; ">, </span><span class="sf17b16">dpi</span><span style="color: #000000; background-color: #efcb05; ">=</span><span class="sf17b16">300</span><span style="color: #000000; background-color: #efcb05; ">)</span></code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span class="sf17b16">&nbsp; &nbsp; ax</span><span style="color: #000000; background-color: #efcb05; ">.</span><span style="color: #000000; background-color: #efcb05; ">s</span><span class="sf17b16">et_xlabel</span><span style="color: #000000; background-color: #efcb05; ">(</span><span class="sf17b18">r</span><span style="color: #000000; background-color: #efcb05; ">'</span><span class="sf17b16">$Temperature\ [^oF]$</span><span style="color: #000000; background-color: #efcb05; ">', </span><span class="sf17b16">fontsize</span><span style="color: #000000; background-color: #efcb05; ">=</span><span class="sf17b16">14</span><span style="color: #000000; background-color: #efcb05; ">)</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span class="sf17b18">&nbsp; &nbsp; ax.set_ylabel(r'$COP\ [W/W]$', fontsize=14)</span>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span class="sf17b16"># Save the plot as SVG file</span>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span class="sf17b16">&nbsp; &nbsp; plt.grid(True)</span>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span class="sf17b16">plt</span><span style="color: #000000; background-color: #efcb05; ">.</span><span style="color: #000000; background-color: #efcb05; ">s</span><span class="sf17b16">avefig</span><span style="color: #000000; background-color: #efcb05; ">(</span><span style="color: #000000; background-color: #efcb05; ">'</span><span class="sf17b16">output_p</span><span style="color: #000000; background-color: #efcb05; ">lot</span><span class="sf17b18">.svg</span><span style="color: #000000; background-color: #efcb05; ">'</span><span style="color: #000000; background-color: #efcb05; ">)</span></code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span class="sf17b16">&nbsp; &nbsp; fig</span><span style="color: #000000; background-color: #efcb05; ">.</span><span style="color: #000000; background-color: #efcb05; ">s</span><span class="sf17b16">uptitle</span><span style="color: #000000; background-color: #efcb05; ">(</span><span style="color: #000000; background-color: #efcb05; ">'</span><span class="sf17b16">Temperature vs COP P</span><span style="color: #000000; background-color: #efcb05; ">lot</span><span style="color: #000000; background-color: #efcb05; ">'</span><span class="sf17b18">, fontsize=18</span><span style="color: #000000; background-color: #efcb05; ">)</span></code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span class="sf17b18">plt.show()</span>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span class="sf17b18">&nbsp; &nbsp; # Adjusting tick locations and labels</span>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span class="sf17b18">&nbsp; &nbsp; secax_x_c.set_xticks([f2c(tick) for tick in ax.get_xticks()])</span>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span class="sf17b18">&nbsp; &nbsp; secax_x_k.set_xticks([f2k(tick) for tick in ax.get_xticks()])</span>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span class="sf17b18">&nbsp; &nbsp; secax_y_EER.set_yticks([COP2EER(tick) for tick in ax.get_yticks()])</span>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span class="sf17b18">&nbsp; &nbsp; # Create legend handles for error bars</span>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span class="sf17b18">&nbsp; &nbsp; legend_handles = [</span>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span class="sf17b18">&nbsp; &nbsp; &nbsp; &nbsp; Line2D(</span>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span class="sf17b18">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [0],</span>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span class="sf17b18">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [0],</span>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span class="sf17b18">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; marker='o',</span>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span class="sf17b18">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; color='w',</span>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span class="sf17b18">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; markerfacecolor='red',</span>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span class="sf17b18">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; markersize=5,</span>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span class="sf17b18">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; linestyle='None',</span>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span class="sf17b18">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; label='Error Bars')]</span>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span class="sf17b18">&nbsp; &nbsp; # Add legends</span>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span class="sf17b18">&nbsp; &nbsp; plt.legend(handles=legend_handles, loc="upper right", fontsize=12)</span>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span class="sf17b18">&nbsp; &nbsp; plt.legend(['COP, EER (including error)'], loc="lower left", fontsize=16)</span>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span class="sf17b18">&nbsp; &nbsp; plt.tight_layout()</span>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span class="sf17b18">&nbsp; &nbsp; # Save the plot as PNG file with specified DPI resolution</span>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span class="sf17b18">&nbsp; &nbsp; plt.savefig(plot_fname, dpi=dpi)</span>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span class="sf17b18">&nbsp; &nbsp; plt.show()</span>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span class="sf17b18">if __name__ == "__main__":</span>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span class="sf17b18">&nbsp; &nbsp; source_file = 'PerformanceData_Unitxx_ArnobDas.xlsx'</span>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span class="sf17b18">&nbsp; &nbsp; plot_fname = 'Temperature_vs_COP_Plot.png'</span>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td style="color: #000000; background-color: #c0c0c0; "><code>&nbsp;</code></td>
+<td class="ln"></td><td style="color: #000000; background-color: #efcb05; "><code><span class="sf17b18">&nbsp; &nbsp; plot_temperature_vs_cop(source_file, plot_fname)</span>&nbsp;</code></td>
+</tr>
+<tr>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+<td class="ln"></td><td class="sf3b2"><code>&nbsp;</code></td>
+</tr>
+</tbody>
+</table>
+</body>
+</html>
